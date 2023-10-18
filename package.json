@@ -1,5 +1,5 @@
 {
-  "name": "custom-sink-js",
+  "name": "custom-sink-ts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
