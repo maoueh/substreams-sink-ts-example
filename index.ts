@@ -6,13 +6,10 @@ import {
     createRegistry,
     fetchSubstream,
     applyParams,
-    createStateTracker,
-    StatefulResponse
+    streamBlocks,
 } from '@substreams/core';
-import { type Transport, createPromiseClient, CallOptions } from "@bufbuild/connect";
 import { createConnectTransport } from "@bufbuild/connect-web";
 import { readPackageFromFile } from '@substreams/manifest';
-import { Stream, Request } from '@substreams/core/proto';
 
 const TOKEN = process.env.SUBSTREAMS_API_TOKEN
 const SPKG = "./substreams/substreams-head-tracker-v1.0.0.spkg"
@@ -94,22 +91,6 @@ const main = async () => {
         break
     }
 }
-
-export async function* streamBlocks(
-    transport: Transport,
-    request: Request,
-    options?: CallOptions | undefined,
-  ): AsyncIterable<StatefulResponse> {
-    const progress = createStateTracker();
-    const client = createPromiseClient(Stream, transport);
-
-    for await (const response of client.blocks(request, options)) {
-      yield {
-        progress: progress(response),
-        response,
-      };
-    }
-  }
 
 main()
 
