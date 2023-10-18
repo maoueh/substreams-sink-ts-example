@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
   "dependencies": {
-    "@bufbuild/connect-web": "^0.12.0",
-    "@substreams/core": "^0.1.19",
-    "@substreams/manifest": "^0.0.9",
+    "@connectrpc/connect-node": "^1.1.2",
+    "@substreams/core": "^0.4.0",
+    "@substreams/manifest": "^0.3.0"
+  },
+  "devDependencies": {
     "@types/node": "^20.8.7",
+    "tsx": "^3.14.0",
     "typescript": "^5.2.2"
   },
   "type": "module"
