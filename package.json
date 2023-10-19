@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx index.ts"
+    "compile": "tsc"
   },
   "dependencies": {
     "@connectrpc/connect-node": "^1.1.2",
-    "@substreams/core": "^0.4.0",
+    "@substreams/core": "^0.5.0",
     "@substreams/manifest": "^0.3.0"
   },
   "devDependencies": {

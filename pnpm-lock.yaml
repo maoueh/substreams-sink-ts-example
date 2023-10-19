@@ -1,16 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@connectrpc/connect-node':
     specifier: ^1.1.2
     version: 1.1.2(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2)
   '@substreams/core':
-    specifier: ^0.4.0
-    version: 0.4.0(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2)
+    specifier: ^0.5.0
+    version: 0.5.0(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2)
   '@substreams/manifest':
     specifier: ^0.3.0
     version: 0.3.0(@bufbuild/buf@1.27.1)(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2)(@effect/schema@0.44.0)(yaml@2.3.3)
@@ -343,6 +339,16 @@ packages:
       '@connectrpc/connect': 1.1.2(@bufbuild/protobuf@1.3.3)
     dev: false
 
+  /@substreams/core@0.5.0(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2):
+    resolution: {integrity: sha512-RCBCb9jizCXuIMClq+BL717g1oYrdFgfFzK+a3DBxHKmHU9h/25wJJXXzTR38mMxiy8cHM5Wtb8VjJz7f0ecdQ==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.3.3
+      '@connectrpc/connect': ^1.1.2
+    dependencies:
+      '@bufbuild/protobuf': 1.3.3
+      '@connectrpc/connect': 1.1.2(@bufbuild/protobuf@1.3.3)
+    dev: false
+
   /@substreams/manifest@0.3.0(@bufbuild/buf@1.27.1)(@bufbuild/protobuf@1.3.3)(@connectrpc/connect@1.1.2)(@effect/schema@0.44.0)(yaml@2.3.3):
     resolution: {integrity: sha512-Srmu2Q08y49eVZ+d0i91NdUt+Ss8Vn4CQhvzjwSooaj1iK7e8zWjNHZTa5hKGWvgk1wKfhaKBNVHPSouJ1bdkA==}
     peerDependencies:
@@ -477,3 +483,7 @@ packages:
     resolution: {integrity: sha512-zw0VAJxgeZ6+++/su5AFoqBbZbrEakwu+X0M5HmcwUiBL7AzcuPKjj5we4xfQLp78LkEMpD0cOnUhmgOVy3KdQ==}
     engines: {node: '>= 14'}
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
