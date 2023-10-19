@@ -7,9 +7,9 @@ import {
     fetchSubstream,
     applyParams,
     streamBlocks,
-} from '@substreams/core';
-import { createConnectTransport } from "@bufbuild/connect-web";
-import { readPackageFromFile } from '@substreams/manifest';
+} from "@substreams/core";
+import { createConnectTransport } from "@connectrpc/connect-node";
+import { readPackageFromFile } from "@substreams/manifest";
 
 const TOKEN = process.env.SUBSTREAMS_API_TOKEN
 const SPKG = "./substreams/substreams-head-tracker-v1.0.0.spkg"
@@ -34,10 +34,7 @@ const main = async () => {
     const transport = createConnectTransport({
         baseUrl: "https://api.streamingfast.io",
         interceptors: [createAuthInterceptor(TOKEN)],
-        useBinaryFormat: true,
-        jsonOptions: {
-            typeRegistry: registry,
-        },
+        httpVersion: "2",
     });
 
     let cursor
@@ -64,14 +61,14 @@ const main = async () => {
 
         let blockCount = 0
         for await (const response of streamBlocks(transport, request)) {
-            const output = unpackMapOutput(response.response, registry);
+            const output = unpackMapOutput(response, registry);
 
             if (output !== undefined && !isEmptyMessage(output)) {
                 const outputAsJson = output.toJson({typeRegistry: registry});
                 console.log(outputAsJson)
             }
 
-            let msg = response.response.message
+            let msg = response.message
             if (msg.case === "blockScopedData") {
                 cursor = msg.value.cursor
                 blockCount += 1
@@ -96,6 +93,6 @@ main()
 
 function sleep(ms: number) {
     return new Promise((resolve) => {
-      setTimeout(resolve, ms);
+        setTimeout(resolve, ms);
     });
-  }
+}
